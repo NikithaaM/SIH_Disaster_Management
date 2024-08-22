@@ -1,0 +1,42 @@
+/* HomePage.css */
+
+
+.navbar-container {
+    font-family: Arial, sans-serif;
+  }
+  
+  .top-bar {
+    padding: 5px 0;
+  }
+  
+  .social-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .social-links a:hover {
+    color: yellow;
+  }
+  
+  .contact-info a,
+  .contact-info span {
+    font-size: 14px;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-item .nav-link {
+    font-weight: bold;
+  }
+  
+  .navbar-nav .dropdown-menu {
+    min-width: 200px;
+  }
+  
+  .dropdown-menu .dropdown-item:hover {
+    background-color: #f8f9fa;
+  }
+  
