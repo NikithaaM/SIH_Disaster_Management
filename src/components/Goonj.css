@@ -1,0 +1,40 @@
+
+.new-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.new-page-header {
+  background-color: #f4f4f4;
+  padding: 10px;
+  text-align: center;
+}
+
+.new-page-header h1 {
+  margin: 0;
+  color: #333;
+}
+
+.logo {
+    max-width: 150px; /* Adjust the logo size as needed */
+    height: auto;
+  }
+  
+.introduction, .history, .initiatives, .campaigns, .awards {
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #333;
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}

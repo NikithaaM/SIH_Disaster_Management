@@ -1,0 +1,88 @@
+/* General styling for the container */
+.donate-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff; /* Background color for the container */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center align text inside the container */
+  }
+  
+  /* Heading styles */
+  .donate-container h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif; /* Fallback font */
+  }
+  
+  /* Input fields styling */
+  .donate-container input[type="text"],
+  .donate-container input[type="file"],
+  .donate-container input[type="number"],
+  .donate-container input[type="tel"] {
+    width: 90%; /* Input field width */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  
+  /* Button styling */
+  .donate-container button {
+    background-color: #4CAF50; /* Primary button color */
+    color: white;
+    padding: 12px 24px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .donate-container button:hover {
+    background-color: #45a049; /* Slightly darker shade on hover */
+  }
+  
+  /* Form element styling */
+  .donate-form {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+  }
+  
+  /* Label styles */
+  .donate-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Error messages styling */
+  .donate-form .error {
+    color: red;
+    font-size: 0.875rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive styling for smaller screens */
+  @media screen and (max-width: 600px) {
+    .donate-container {
+      width: 100%; /* Full width on smaller screens */
+      padding: 10px;
+    }
+  
+    .donate-container h1 {
+      font-size: 1.5rem; /* Smaller font size for headings */
+    }
+  
+    .donate-container button {
+      padding: 10px 20px; /* Adjust padding for buttons */
+    }
+  }
+  

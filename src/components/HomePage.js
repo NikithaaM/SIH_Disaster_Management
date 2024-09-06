@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,6 +9,9 @@ import planningBeforeDisasterImage from '../images/planning-before-disaster.jpg'
 import duringDisasterImage from '../images/during-disaster.jpg';
 import recoveryAfterDisasterImage from '../images/recovery-after-disaster.jpg';
 import image1 from '../images/image1.png';
+import image2 from '../images/hurricane.jpg';
+import image3 from '../images/earthquake.jpg';
+import image4 from '../images/rescue.jpg';
 
 function HomePage() {
   const sliderSettings = {
@@ -20,6 +23,36 @@ function HomePage() {
     autoplay: true,
     autoplaySpeed: 6000, // Transition every 6 seconds
   };
+
+  useEffect(() => {
+    try {
+      // Create and append the chatbot script
+      const script1 = document.createElement('script');
+      script1.src = "https://www.chatbase.co/embed.min.js";
+      script1.dataset.chatbotId = "EWbwH6vYjS0OO6cInPzof";
+      script1.dataset.domain = "www.chatbase.co";
+      script1.defer = true;
+      document.body.appendChild(script1);
+
+      // Create and append the chatbot configuration
+      const script2 = document.createElement('script');
+      script2.text = `
+        window.embeddedChatbotConfig = {
+          chatbotId: "EWbwH6vYjS0OO6cInPzof",
+          domain: "www.chatbase.co"
+        }
+      `;
+      document.body.appendChild(script2);
+
+      return () => {
+        // Cleanup scripts when the component is unmounted
+        document.body.removeChild(script1);
+        document.body.removeChild(script2);
+      };
+    } catch (error) {
+      console.error("Error loading chatbot scripts:", error);
+    }
+  }, []);
 
   return (
     <div className="container">
@@ -36,17 +69,17 @@ function HomePage() {
             <img src={image1} alt="Risk Mitigation" style={{ width: '100%', height: 'auto' }} />
           </div>
           <div>
-            <img src={planningBeforeDisasterImage} alt="Planning Before a Disaster" style={{ width: '100%', height: 'auto' }} />
+            <img src={image2} alt="Planning Before a Disaster" style={{ width: '100%', height: 'auto' }} />
           </div>
           <div>
-            <img src={duringDisasterImage} alt="During a Disaster" style={{ width: '100%', height: 'auto' }} />
+            <img src={image3} alt="During a Disaster" style={{ width: '100%', height: 'auto' }} />
           </div>
           <div>
-            <img src={recoveryAfterDisasterImage} alt="Recovery After a Disaster" style={{ width: '100%', height: 'auto' }} />
+            <img src={image4} alt="Recovery After a Disaster" style={{ width: '100%', height: 'auto' }} />
           </div>
         </Slider>
       </section>
-
+      <br />
       {/* Risk Mitigation Section */}
       <section>
         <h2>Risk Mitigation</h2>
@@ -81,6 +114,15 @@ function HomePage() {
         <p>
           Recovery involves restoring normalcy to affected areas after a disaster. This includes rebuilding infrastructure, providing psychological and financial support to victims, and implementing lessons learned to improve future disaster preparedness. Recovery is a long-term process that requires coordination and collaboration across various sectors.
         </p>
+      </section>
+
+      {/* Chatbot iframe */}
+      <section>
+        <iframe
+          src="https://www.chatbase.co/chatbot-iframe/EWbwH6vYjS0OO6cInPzof"
+          style={{ width: '10%', height: '40px', border: 'none' }}
+          title="Disaster Management Chatbot"
+        ></iframe>
       </section>
     </div>
   );
