@@ -9,6 +9,8 @@ function VolunteerRegistrationForm() {
     gender: '',
     availability: 'weekdays',
     locationPreference: 'onsite',
+    state: '',
+    district: ''
   });
 
   const handleChange = (e) => {
@@ -20,7 +22,7 @@ function VolunteerRegistrationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await fetch('http://localhost:5000/api/volunteers', {
         method: 'POST',
@@ -29,7 +31,7 @@ function VolunteerRegistrationForm() {
         },
         body: JSON.stringify(formData),
       });
-  
+
       if (response.ok) {
         alert('Thank you for signing up! Confirmation will be sent via mail.');
         setFormData({
@@ -40,6 +42,8 @@ function VolunteerRegistrationForm() {
           gender: '',
           availability: 'weekdays',
           locationPreference: 'onsite',
+          state: '',
+          district: ''
         });
       } else {
         alert('Failed to register. Please try again later.');
@@ -49,11 +53,10 @@ function VolunteerRegistrationForm() {
       alert('Server error. Please try again later.');
     }
   };
-  
 
   return (
     <div className="form-container">
-      <h2 style={{ textAlign: 'center' }}>Volunteer Registration Form</h2> 
+      <h2 style={{ textAlign: 'center' }}>Volunteer Registration Form</h2>
       <br></br>
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '400px', margin: 'auto' }}>
         <label>
@@ -121,7 +124,7 @@ function VolunteerRegistrationForm() {
             <option value="prefer_not_to_say">Prefer not to say</option>
           </select>
         </label>
-        
+
         <label>
           Availability:
           <select 
@@ -136,7 +139,7 @@ function VolunteerRegistrationForm() {
             <option value="both">Both</option>
           </select>
         </label>
-        
+
         <div>
           <label>Location Preference:</label>
           <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0' }}>
@@ -164,6 +167,30 @@ function VolunteerRegistrationForm() {
             </label>
           </div>
         </div>
+
+        <label>
+          State:
+          <input 
+            type="text" 
+            name="state" 
+            value={formData.state} 
+            onChange={handleChange} 
+            required 
+            style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
+          />
+        </label>
+
+        <label>
+          District:
+          <input 
+            type="text" 
+            name="district" 
+            value={formData.district} 
+            onChange={handleChange} 
+            required 
+            style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
+          />
+        </label>
 
         <button type="submit" style={{ padding: '10px', backgroundColor: '#007BFF', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Submit</button>
       </form>

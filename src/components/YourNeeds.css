@@ -1,0 +1,57 @@
+.your-needs-container {
+    animation: fadeIn 1.5s ease-in-out;
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #28a745;
+  }
+  
+  .needs-form .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .needs-form label {
+    font-weight: bold;
+  }
+  
+  .needs-form .form-control {
+    border-radius: 5px;
+    padding: 0.75rem;
+  }
+  
+  .needs-form .form-control-file {
+    margin-top: 10px; /* Add margin between label and file input */
+  }
+  
+  .needs-form .submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.2rem;
+    background-color: #28a745;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .needs-form .submit-btn:hover {
+    background-color: #218838;
+    cursor: pointer;
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

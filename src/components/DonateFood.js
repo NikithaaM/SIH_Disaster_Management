@@ -136,14 +136,14 @@ function DonateFood() {
                   }}
                   onClick={() => saveToCart(item)}
                 >
-                  Save to Cart
+                  Willing to donate
                 </button>
               </div>
             ))}
           </div>
 
           <div style={{ marginTop: '30px' }}>
-            <h3>Cart Details</h3>
+            <h3>Donating It Details</h3>
             {cart.length === 0 ? (
               <p>No items in cart.</p>
             ) : (

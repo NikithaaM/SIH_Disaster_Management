@@ -13,16 +13,19 @@ import DonateFood from './components/DonateFood';
 import DonateEssentialItems from './components/DonateEssentialItems';
 import Login from './components/Login';
 import DonatePage from './components/DonatePage';
-import PaymentPage from './components/PaymentPage';  // Import PaymentPage component
+import PaymentPage from './components/PaymentPage';
 import LogoDescription from './components/LogoDescription';
 import FullDescription from './components/FullDescription';
 import Goonj from './components/Goonj';
 import PaymentGateway from './components/PaymentGateway';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Import Bootstrap JS, including Popper.js
 import Admin from './components/Admin';
-
-
+import YourNeeds from './components/YourNeeds'; // Import YourNeeds component
+import CounsellingSession from './components/CounsellingSession';
+import CounselorPage from './logins/CounselorPage';
+import MunicipalityPage from './logins/MunicipalityPage';
+import CounselorDashboard from './logins/CounselorDashboard';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
   return (
@@ -42,12 +45,17 @@ function App() {
           <Route path="/donate-essential-items" element={<DonateEssentialItems />} />
           <Route path="/donate" element={<DonatePage />} /> 
           <Route path="/admin-login" element={<Login />} />
-          <Route path="/payment" element={<PaymentPage />} /> {/* Add the route for PaymentPage */}
-          <Route path="/logo" element={<LogoDescription />} /> {/* Correct the syntax here */}
+          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/logo" element={<LogoDescription />} />
           <Route path="/full-description" element={<FullDescription />}/>
           <Route path="/goonj-description" element={<Goonj />}/>
           <Route path="/payment-gateway" element={<PaymentGateway />}/>
           <Route path="/admin" element={<Admin />} />
+          <Route path="/your-needs" element={<YourNeeds />} /> {/* Add route for YourNeeds */}
+          <Route path="/counselling-session" element={<CounsellingSession />} /> 
+          <Route path="/counselor" element={<CounselorPage />} />
+          <Route path="/municipality" element={<MunicipalityPage />} />
+          <Route path="/counselor-dashboard" element={<CounselorDashboard />} />
         </Routes>
       </div>
     </Router>
