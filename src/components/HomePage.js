@@ -56,7 +56,7 @@ function HomePage() {
 
   return (
     <div className="container">
-      <h1 style={{ textAlign: 'center' }}>Welcome to Disaster Management</h1>
+      <h1 style={{ textAlign: 'center' }}>Welcome to Crisis Compass</h1>
       <br />
       <p>
         Disaster management is a critical process involving risk mitigation and effective planning to protect lives, property, and resources. Explore the essential strategies and actions for managing disasters before, during, and after they occur.

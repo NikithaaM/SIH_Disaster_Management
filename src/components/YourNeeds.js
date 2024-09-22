@@ -5,7 +5,7 @@ function YourNeeds() {
   const [formData, setFormData] = useState({
     name: '',
     address: '',
-    identityProof: null, // Initialize with null for file
+    identityProof: null,
     comments: ''
   });
 
@@ -15,23 +15,33 @@ function YourNeeds() {
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, identityProof: e.target.files[0] }); // Get the uploaded file
+    setFormData({ ...formData, identityProof: e.target.files[0] });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Handle form submission
-    console.log('Form submitted:', formData);
-
-    // You can use FormData to handle file uploads for further processing (e.g., sending it to an API)
     const formSubmission = new FormData();
     formSubmission.append('name', formData.name);
     formSubmission.append('address', formData.address);
-    formSubmission.append('identityProof', formData.identityProof); // File upload
+    formSubmission.append('identityProof', formData.identityProof);
     formSubmission.append('comments', formData.comments);
 
-    // Submit formSubmission to the backend
+    try {
+      const response = await fetch('http://localhost:5000/submit-form', {
+        method: 'POST',
+        body: formSubmission,
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        alert('Form submitted successfully');
+      } else {
+        alert('Error: ' + result.message);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to submit the form.');
+    }
   };
 
   return (
@@ -71,7 +81,7 @@ function YourNeeds() {
             name="identityProof" 
             onChange={handleFileChange} 
             className="form-control-file" 
-            accept=".jpg,.jpeg,.png,.pdf" // Accept only certain file types
+            accept=".jpg,.jpeg,.png,.pdf" 
             required 
           />
         </div>

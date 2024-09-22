@@ -19,11 +19,13 @@ import FullDescription from './components/FullDescription';
 import Goonj from './components/Goonj';
 import PaymentGateway from './components/PaymentGateway';
 import Admin from './components/Admin';
-import YourNeeds from './components/YourNeeds'; // Import YourNeeds component
+import YourNeeds from './components/YourNeeds'; 
 import CounsellingSession from './components/CounsellingSession';
 import CounselorPage from './logins/CounselorPage';
 import MunicipalityPage from './logins/MunicipalityPage';
 import CounselorDashboard from './logins/CounselorDashboard';
+import ViewPeopleNeeds from './logins/ViewPeopleNeeds'; // Import new components
+import UpdateDonations from './logins/UpdateDonations'; // Import new components
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
@@ -51,11 +53,13 @@ function App() {
           <Route path="/goonj-description" element={<Goonj />}/>
           <Route path="/payment-gateway" element={<PaymentGateway />}/>
           <Route path="/admin" element={<Admin />} />
-          <Route path="/your-needs" element={<YourNeeds />} /> {/* Add route for YourNeeds */}
+          <Route path="/your-needs" element={<YourNeeds />} />
           <Route path="/counselling-session" element={<CounsellingSession />} /> 
           <Route path="/counselor" element={<CounselorPage />} />
           <Route path="/municipality" element={<MunicipalityPage />} />
           <Route path="/counselor-dashboard" element={<CounselorDashboard />} />
+          <Route path="/view-needs" element={<ViewPeopleNeeds />} /> {/* Add route for View People's Needs */}
+          <Route path="/update-donations" element={<UpdateDonations />} /> {/* Add route for Update Donations */}
         </Routes>
       </div>
     </Router>
