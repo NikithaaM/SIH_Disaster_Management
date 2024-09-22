@@ -1,81 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AdminPage() {
-  const [message, setMessage] = useState('');
-  const [volunteers, setVolunteers] = useState([]);
+  const navigate = useNavigate();
 
-  // Fetch the volunteers when the component loads
-  useEffect(() => {
-    const fetchVolunteers = async () => {
-      const response = await fetch('http://localhost:5000/api/volunteers');
-      const data = await response.json();
-      setVolunteers(data);
-    };
-    fetchVolunteers();
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const targetEmails = volunteers.map((volunteer) => volunteer.email);
-
-    try {
-      const response = await fetch('http://localhost:5000/api/sendMessage', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message, targetEmails }),
-      });
-
-      if (response.ok) {
-        alert('Message sent successfully!');
-        setMessage('');
-      } else {
-        alert('Failed to send the message.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Server error. Please try again later.');
-    }
+  const handleNavigate = (path) => {
+    navigate(path);
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: 'auto' }}>
-      <h2>Admin Message Sender</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="message">Message:</label>
-          <textarea
-            id="message"
-            name="message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required
-            style={{ width: '100%', height: '100px', padding: '10px' }}
-          />
+    <div className="container mt-5">
+      <div className="row">
+        {/* Message System Card */}
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">Message System</h5>
+              <p className="card-text">
+                This section allows you to manage messages sent to and from the users.
+              </p>
+              <button
+                className="btn btn-primary"
+                onClick={() => handleNavigate('/message-system')} // Navigate to Message System component
+              >
+                Go to Message System
+              </button>
+            </div>
+          </div>
         </div>
-        <div>
-          <label htmlFor="volunteers">Select Volunteers:</label>
-          <select
-            id="volunteers"
-            name="volunteers"
-            multiple
-            value={volunteers.map(volunteer => volunteer._id)}
-            disabled
-            style={{ width: '100%', padding: '10px' }}
-          >
-            {volunteers.map((volunteer) => (
-              <option key={volunteer._id} value={volunteer._id}>
-                {volunteer.name} - {volunteer.email}
-              </option>
-            ))}
-          </select>
+
+        {/* Manage Donate Section Card */}
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">Manage Donations</h5>
+              <p className="card-text">
+                Here you can manage the donation system and keep track of available items.
+              </p>
+              <button
+                className="btn btn-primary"
+                onClick={() => handleNavigate('/manage-donations')} // Navigate to ManageDonations component
+              >
+                Manage Donations
+              </button>
+            </div>
+          </div>
         </div>
-        <button type="submit" style={{ marginTop: '20px', padding: '10px', backgroundColor: '#007BFF', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-          Send Message
-        </button>
-      </form>
+      </div>
     </div>
   );
 }

@@ -19,6 +19,8 @@ import FullDescription from './components/FullDescription';
 import Goonj from './components/Goonj';
 import PaymentGateway from './components/PaymentGateway';
 import Admin from './components/Admin';
+
+import MessageSystem from './components/MessageSystem'; // Import Message System component
 import YourNeeds from './components/YourNeeds'; 
 import CounsellingSession from './components/CounsellingSession';
 import CounselorPage from './logins/CounselorPage';
@@ -26,6 +28,7 @@ import MunicipalityPage from './logins/MunicipalityPage';
 import CounselorDashboard from './logins/CounselorDashboard';
 import ViewPeopleNeeds from './logins/ViewPeopleNeeds'; // Import new components
 import UpdateDonations from './logins/UpdateDonations'; // Import new components
+import ManageDonations from './components/ManageDonations'; // Import the new component
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
@@ -58,8 +61,10 @@ function App() {
           <Route path="/counselor" element={<CounselorPage />} />
           <Route path="/municipality" element={<MunicipalityPage />} />
           <Route path="/counselor-dashboard" element={<CounselorDashboard />} />
+          <Route path="/manage-donations" element={<ManageDonations />} /> {/* New route for Manage Donations */}
           <Route path="/view-needs" element={<ViewPeopleNeeds />} /> {/* Add route for View People's Needs */}
           <Route path="/update-donations" element={<UpdateDonations />} /> {/* Add route for Update Donations */}
+          <Route path="/message-system" element={<MessageSystem />} /> {/* Message System Page */}
         </Routes>
       </div>
     </Router>
