@@ -9,7 +9,7 @@ function ViewPeopleNeeds() {
   useEffect(() => {
     const fetchNeeds = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/yourneeds'); // API call to backend
+        const response = await axios.get('http://localhost:5009/api/yourneeds'); // API call to backend
         setNeeds(response.data); // Set the fetched data to the state
       } catch (error) {
         console.error('Error fetching needs:', error);
@@ -34,7 +34,7 @@ function ViewPeopleNeeds() {
               <p><strong>Address:</strong> {need.address}</p>
               <p><strong>Comments:</strong> {need.comments}</p>
               <p><strong>Identity Proof:</strong> 
-                <a href={`http://localhost:5000/uploads/${need.identityProof}`} target="_blank" rel="noopener noreferrer">View Proof</a>
+                <a href={`http://localhost:5009/uploads/${need.identityProof}`} target="_blank" rel="noopener noreferrer">View Proof</a>
               </p>
             </li>
           ))}
