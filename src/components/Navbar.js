@@ -9,13 +9,17 @@ function Navbar() {
   const navigate = useNavigate();
 
   const handlePostDisasterClick = (e) => {
-    e.preventDefault(); // Prevent default link behavior
-    navigate('/post-disaster'); // Navigate to Post Disaster page
+    e.preventDefault();
+    navigate('/post-disaster');
+  };
+
+  const handleEducationClick = (e) => {
+    e.preventDefault();
+    navigate('/education');
   };
 
   return (
     <div className="navbar-container">
-      {/* Top Bar */}
       <div className="top-bar bg-success text-white">
         <div className="container d-flex justify-content-between align-items-center">
           <div className="social-links">
@@ -38,7 +42,6 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Main Navbar */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
           <Link className="navbar-brand" to="/">
@@ -61,7 +64,6 @@ function Navbar() {
                 <Link className="nav-link" to="/affected-districts">Affected Districts</Link>
               </li>
 
-              {/* Donate Section */}
               <li className="nav-item dropdown"
                 onMouseEnter={(e) => {
                   const dropdown = e.currentTarget.querySelector('.dropdown-menu');
@@ -91,36 +93,22 @@ function Navbar() {
                 </ul>
               </li>
 
-              {/* Post-Disaster Dropdown */}
-              <li className="nav-item dropdown"
-                onMouseEnter={(e) => {
-                  const dropdown = e.currentTarget.querySelector('.dropdown-menu');
-                  dropdown.style.display = 'block';
-                }}
-                onMouseLeave={(e) => {
-                  const dropdown = e.currentTarget.querySelector('.dropdown-menu');
-                  dropdown.style.display = 'none';
-                }}
-              >
-                <Link
-                  className="nav-link"
-                  to="#"
-                  role="button"
-                  aria-expanded="false"
-                  onClick={handlePostDisasterClick}
-                >
+              <li className="nav-item">
+                <Link className="nav-link" to="#" onClick={handlePostDisasterClick}>
                   Post-Disaster
                 </Link>
-                <ul className="dropdown-menu" aria-labelledby="postDisasterDropdown" style={{ display: 'none' }}>
-                  <li><Link className="dropdown-item" to="/volunteer-signup">Volunteer Recruiting</Link></li>
-                  <li><Link className="dropdown-item" to="/payment-gateway">Fund Contribution</Link></li>
-                  <li><Link className="dropdown-item" to="/counselling-session">Counselling Session</Link></li>
-                </ul>
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link" to="/your-needs">Your Needs</Link> {/* Your Needs Link */}
+                <Link className="nav-link" to="/your-needs">Your Needs</Link>
               </li>
+
+              <li className="nav-item">
+                <Link className="nav-link" to="#" onClick={handleEducationClick}>
+                  Disaster Awareness
+                </Link>
+              </li>
+
               <li className="nav-item">
                 <Link className="nav-link" to="/logo">Our Collaborators</Link>
               </li>

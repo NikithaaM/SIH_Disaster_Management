@@ -31,7 +31,7 @@ const CounsellingSession = () => {
         }
 
         if (!formData.email.trim()) {
-            formErrors.email = 'Gmail is required';
+            formErrors.email = 'Email is required';
         } else if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(formData.email)) {
             formErrors.email = 'Email must be a valid Gmail address';
         }
@@ -44,20 +44,24 @@ const CounsellingSession = () => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevent page reload on form submission
         const formValidationErrors = validateForm();
-
+    
         if (Object.keys(formValidationErrors).length === 0) {
+            console.log('Form data is valid:', formData);
             try {
-                const response = await fetch('http://localhost:5000/api/sessions', {
+                const response = await fetch('http://localhost:5060/api/sessions', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(formData),
                 });
-
+    
+                console.log('Response from server:', response);
+    
                 if (response.ok) {
+                    console.log('Form submitted successfully');
                     setIsSubmitted(true);
                     setFormData({
                         name: '',
@@ -67,17 +71,18 @@ const CounsellingSession = () => {
                         issue: ''
                     });
                 } else {
-                    console.log('Failed to submit form');
+                    console.error('Failed to submit form. Status:', response.status);
                 }
             } catch (error) {
                 console.error('Error submitting form:', error);
             }
         } else {
+            console.log('Form validation errors:', formValidationErrors);
             setErrors(formValidationErrors);
             setIsSubmitted(false);
         }
     };
-
+    
     return (
         <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', textAlign: 'center' }}>
             <h1>Counselling Session</h1>
@@ -92,7 +97,6 @@ const CounsellingSession = () => {
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={handleChange}
-                    required
                     style={{ padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
                 />
                 {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
@@ -103,7 +107,6 @@ const CounsellingSession = () => {
                     placeholder="Your Address"
                     value={formData.address}
                     onChange={handleChange}
-                    required
                     style={{ padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
                 />
                 {errors.address && <p style={{ color: 'red' }}>{errors.address}</p>}
@@ -114,7 +117,6 @@ const CounsellingSession = () => {
                     placeholder="Phone Number"
                     value={formData.phoneNumber}
                     onChange={handleChange}
-                    required
                     style={{ padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
                 />
                 {errors.phoneNumber && <p style={{ color: 'red' }}>{errors.phoneNumber}</p>}
@@ -125,7 +127,6 @@ const CounsellingSession = () => {
                     placeholder="Gmail Address"
                     value={formData.email}
                     onChange={handleChange}
-                    required
                     style={{ padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
                 />
                 {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
@@ -135,7 +136,6 @@ const CounsellingSession = () => {
                     placeholder="Describe the issue that needs to be addressed"
                     value={formData.issue}
                     onChange={handleChange}
-                    required
                     style={{ padding: '10px', borderRadius: '5px', border: '1px solid #ccc', minHeight: '100px' }}
                 />
                 {errors.issue && <p style={{ color: 'red' }}>{errors.issue}</p>}

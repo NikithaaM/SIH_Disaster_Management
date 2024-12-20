@@ -13,7 +13,7 @@ function CounselorDashboard() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/sessions');
+        const response = await fetch('http://localhost:5060/api/sessions');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -29,7 +29,7 @@ function CounselorDashboard() {
 
     const fetchAcceptedRequests = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/sessions/accepted');
+        const response = await fetch('http://localhost:5060/api/sessions/accepted');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -48,7 +48,7 @@ function CounselorDashboard() {
   // Handle request acceptance
   const handleAcceptRequest = async (requestId, name) => {
     try {
-      const response = await fetch('http://localhost:5000/api/sessions/accept', {
+      const response = await fetch('http://localhost:5060/api/sessions/accept', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

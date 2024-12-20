@@ -9,10 +9,13 @@ function PostDisaster() {
   };
 
   const handleDonateClick = () => {
-    navigate('/donate'); // Ensure this matches the path in App.js
+    navigate('/donate');
   };
 
-  // Inline styles for animations and effects
+  const handleGetSupportClick = () => {
+    navigate('/counselling-session'); // Navigating to the counseling session
+  };
+
   const containerStyle = {
     animation: 'fadeIn 1s ease-in-out',
     transition: 'all 0.3s ease',
@@ -27,9 +30,8 @@ function PostDisaster() {
     marginBottom: '20px',
   };
 
-  // Button color changed to grey
   const buttonStyle = {
-    backgroundColor: '#6c757d', // Grey color
+    backgroundColor: '#6c757d',
     color: '#fff',
     padding: '10px 20px',
     border: 'none',
@@ -48,12 +50,11 @@ function PostDisaster() {
     }
   };
 
-  // Change button hover state to a darker grey
   const handleButtonHover = (e, hover) => {
     if (hover) {
-      e.currentTarget.style.backgroundColor = '#5a6268'; // Darker grey on hover
+      e.currentTarget.style.backgroundColor = '#5a6268';
     } else {
-      e.currentTarget.style.backgroundColor = '#6c757d'; // Default grey color
+      e.currentTarget.style.backgroundColor = '#6c757d';
     }
   };
 
@@ -116,6 +117,7 @@ function PostDisaster() {
             style={buttonStyle}
             onMouseEnter={(e) => handleButtonHover(e, true)}
             onMouseLeave={(e) => handleButtonHover(e, false)}
+            onClick={handleGetSupportClick} // Navigating to counseling session
           >
             Get Support
           </button>

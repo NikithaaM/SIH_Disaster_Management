@@ -26,7 +26,7 @@ const sessionSchema = new mongoose.Schema({
     email: String,
     issue: String,
     status: { type: String, default: 'pending' },
-    doctorName: { type: String, default: '' } // Add doctorName field
+    doctorName: { type: String, default: '' }
 });
 
 // Create the model
@@ -35,44 +35,37 @@ const Session = mongoose.model('Session', sessionSchema);
 // Route to fetch all pending sessions
 app.get('/api/sessions', async (req, res) => {
     try {
-        const sessions = await Session.find({ status: 'pending' }); // Fetch only pending sessions
+        const sessions = await Session.find({ status: 'pending' });
         res.status(200).json(sessions);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching sessions', error });
     }
 });
 
-// Route to fetch all accepted sessions
-app.get('/api/sessions/accepted', async (req, res) => {
+app.post('/api/sessions', async (req, res) => {
+    console.log('Received data:', req.body);
+    const { name, address, phoneNumber, email, issue } = req.body;
+
+    const newSession = new Session({
+        name,
+        address,
+        phoneNumber,
+        email,
+        issue
+    });
+
     try {
-        const sessions = await Session.find({ status: 'accepted' });
-        res.status(200).json(sessions);
+        const savedSession = await newSession.save();
+        console.log('Session saved:', savedSession);
+        res.status(201).json(savedSession);
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching accepted sessions', error });
+        console.error('Error saving session:', error);
+        res.status(500).json({ message: 'Error creating session', error });
     }
 });
 
-// Route to accept a session
-app.post('/api/sessions/accept', async (req, res) => {
-    const { requestId, doctorName } = req.body;
 
-    try {
-        const session = await Session.findByIdAndUpdate(
-            requestId,
-            { status: 'accepted', doctorName: doctorName },
-            { new: true }
-        );
-
-        if (!session) {
-            return res.status(404).json({ message: 'Session not found' });
-        }
-        res.status(200).json({ message: 'Request accepted successfully!' });
-    } catch (error) {
-        res.status(500).json({ message: 'Error accepting request', error });
-    }
-});
-
-// Route to create a new session (for testing purposes)
+// Route to create a new session
 app.post('/api/sessions', async (req, res) => {
     const { name, address, phoneNumber, email, issue } = req.body;
 
@@ -93,7 +86,7 @@ app.post('/api/sessions', async (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5060;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

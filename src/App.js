@@ -33,6 +33,7 @@ import UpdateInventory from './components/UpdateInventory';
 import ManageInventory from './components/ManageInventory';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import Education from './components/Education'; 
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
           <Route path="/municipality-request" element={<MunicipalityRequest />} />
           <Route path="/update-inventory" element={<UpdateInventory />} />
           <Route path="/manage-inventory" element={<ManageInventory />} />
+          <Route path="/education" element={<Education />} />
 
         </Routes>
       </div>
